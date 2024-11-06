@@ -1,0 +1,15 @@
+.content {
+    height: 100%;
+    padding: 5%;
+    display: flex;
+    flex-direction: column;
+    gap: 10%;
+
+    .nav-area {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+  }
+  

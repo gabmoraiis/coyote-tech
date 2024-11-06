@@ -1,14 +1,15 @@
+import { pagesRoutes } from './pages.routes';
 import { provideRouter } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { panelRoutes } from  './panel.routes'
-
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [],
   imports: [
-    CommonModule
+    CommonModule,
+    HttpClientModule
   ],
-  providers: [provideRouter(panelRoutes)]
+  providers: [provideRouter(pagesRoutes)]
 })
 export class PagesModule { }
