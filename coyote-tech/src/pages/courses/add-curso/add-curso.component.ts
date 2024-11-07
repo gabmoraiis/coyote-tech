@@ -77,10 +77,12 @@ export class AddCursoComponent {
             this.isLoading = false;
             this.snackBar.open('Curso salvo com sucesso!');
             this.dialog.closeAll();
-            window.location.reload();
           }, (error) => {
             this.snackBar.open('Erro ao salvar curso, tente novamente mais tarde.')
             this.isLoading = false;
+          }, () => {
+            this.isLoading = false;
+            window.location.reload();
           })
         } else {
           this.formCurso.markAllAsTouched();
@@ -100,11 +102,13 @@ export class AddCursoComponent {
         this.cursoService.editarCurso(this.data.id, this.body!).subscribe((response: any) => {
           this.isLoading = false;
           this.snackBar.open('Curso editado com sucesso!');
-          this.dialog.closeAll();
-          window.location.reload();
+          this.dialog.closeAll();   
         }, (error) => {
           this.snackBar.open('Erro ao editar curso, tente novamente mais tarde.')
           this.isLoading = false;
+        }, () => {
+          this.isLoading = false;
+          window.location.reload();
         })
       } else {
         this.formCurso.markAllAsTouched();
