@@ -71,7 +71,11 @@ export class AddAlunoComponent {
         this.formAlunos.get('email')?.setValue(response[0].email);
         this.isLoading = false;
       }, (error) => {
-        this.snackBar.open('Erro carregar informações da disciplina, tente novamente mais tarde.')
+        if(error.status == 400){
+          this.snackBar.open('Aluno(a) já cadastrado.')  
+          } else {
+            this.snackBar.open('Erro ao salvar aluno(a), tente novamente mais tarde.')
+          }
         this.isLoading = false;
       });
     }
@@ -101,7 +105,11 @@ export class AddAlunoComponent {
             this.snackBar.open('Aluno(a) salvo com sucesso!');
             this.dialog.closeAll();
           }, (error) => {
-            this.snackBar.open('Erro ao salvar aluno(a), tente novamente mais tarde.')
+            if(error.status == 400){
+              this.snackBar.open('Aluno(a) já cadastrado.')  
+              } else {
+                this.snackBar.open('Erro ao salvar aluno(a), tente novamente mais tarde.')
+              }
             this.isLoading = false;
           }, () => {
             this.isLoading = false;

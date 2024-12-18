@@ -78,7 +78,11 @@ export class AddCursoComponent {
             this.snackBar.open('Curso salvo com sucesso!');
             this.dialog.closeAll();
           }, (error) => {
-            this.snackBar.open('Erro ao salvar curso, tente novamente mais tarde.')
+            if(error.status == 400){
+            this.snackBar.open('Curso já cadastrado.')  
+            } else {
+              this.snackBar.open('Erro ao salvar curso, tente novamente mais tarde.')
+            }
             this.isLoading = false;
           }, () => {
             this.isLoading = false;
@@ -104,7 +108,11 @@ export class AddCursoComponent {
           this.snackBar.open('Curso editado com sucesso!');
           this.dialog.closeAll();   
         }, (error) => {
-          this.snackBar.open('Erro ao editar curso, tente novamente mais tarde.')
+          if(error.status == 400){
+            this.snackBar.open('Curso já cadastrado.')  
+            } else {
+              this.snackBar.open('Erro ao salvar curso, tente novamente mais tarde.')
+            }
           this.isLoading = false;
         }, () => {
           this.isLoading = false;
